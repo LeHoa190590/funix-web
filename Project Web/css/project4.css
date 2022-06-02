@@ -1,0 +1,155 @@
+@media only screen and (min-width: 992px){
+    li a:link, a:visited {
+        display: inline-block;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 0 8px;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: bold;
+        color: black;
+        font-size: 1.5vw;
+    }
+    li a:hover {
+        color: white;
+        background-color: green;
+    }
+    img#ban {
+        width: 100%;
+        height: auto;
+    }
+    img#sidebar {
+        width: auto;
+        height: 115px;
+        margin: 0 0 5% 0;
+    }
+    img#sidebar:hover {
+        border: 2px solid black;
+    }
+    h1#tabl{
+        display: none;
+    }
+    div#mobil{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 991px){
+    li a:link, a:visited {
+        display: inline-block;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 0 8px;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: bold;
+        color: white;
+        font-size: 2.5vw;
+        background-color: green;
+    }
+    img#ban {
+        width: 95%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        padding-top: 1%;
+        margin-bottom: 5%;
+    }
+    img#sidebar {
+        width: 100%;
+        height: auto;
+        margin: 0 0 4% 0;
+    }
+    h1#tabl{
+        display: block;
+        text-align: center;
+        font-weight: bold;
+        font-size: 5vw;
+    }
+    div#mobil{
+        display: none;
+       
+    }
+}
+
+@media only screen and (max-width: 768px){
+    li a:link, a:visited {
+        display: inline-block;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 0 8px;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: bold;
+        color: white;
+        font-size: 2.5vw;
+        background-color: rgb(18, 186, 252);
+    }
+    div#mobil{
+        display: block;
+        text-align: center;
+    }
+    div#pc{
+        display: none;
+    }
+    h1#tabl{
+        display: none;
+    }
+    h3, p {
+        text-align: center;
+    }
+}
+#logo{
+    max-block-size: 100px;
+    margin-left: 5%;
+}
+.hotline{
+    float: right;
+    margin-right: 5%;
+    text-align: center;
+    line-height: 6;
+    text-decoration: none;
+    color: rgb(12, 5, 105);
+}
+a.hotline:hover{
+    text-decoration: underline;
+}
+ul#main-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+li {
+    display: inline;
+}
+* {
+    box-sizing: border-box;
+}
+img#banner {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+img#gioithieu {
+    width: 90%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+#p_hotel {
+    text-align: center;
+}
