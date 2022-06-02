@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Bai thuc hanh assignment 02</title>
+    <link rel="stylesheet" href="css/ASMN.css" >
+</head>
+<body>
+    <h1>Class Marksheet</h1>
+    <div class="intable">
+        
+            <table class="infor">
+                <tr>
+                    <th>Họ Tên:</th>
+                    <th><input name="name" id="name" ></th>
+                </tr>
+                <tr>
+                    <th>Điểm toán:</th>
+                    <th><input name="match-point" id="match-point" ></th>
+                </tr>
+                <tr>
+                    <th>Điểm lý:</th>
+                    <th><input name="phys-point" id="phys-point" ></th>
+                </tr>
+                <tr>
+                    <th>Điểm hóa:</th>
+                    <th><input name="chem-point" id="chem-point" ></th>
+                </tr>
+                <tr>
+                    <th colspan="2" class="buton"><button type="submit" onclick="checker(); insertFunction()">Nhập</button></th>
+                </tr>
+            </table>
+        
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <table class="point-tabl" id="table-p">
+            <tr>
+                <th class="col-md-1 point-tab">STT</th>
+                <th class="col-md-3 point-tab">Họ Tên</th>
+                <th class="col-md-2 point-tab">Toán</th>
+                <th class="col-md-2 point-tab">Lý</th>
+                <th class="col-md-2 point-tab">Hóa</th>
+                <th class="col-md-2 point-tab">Trung bình</th>
+            </tr>
+            <tr></tr>
+            <tr>
+                <th colspan="6" class="buton">
+                    <button type="button" onclick="calculator()">Tính điểm trung bình</button> 
+                    <button type="button" onclick="checkStu()">Xác định học sinh giỏi</button>
+                </th>
+            </tr>
+        </table>
+    </div>
+   
+
+    <!-- script here-->
+    <script type="text/javascript">
+        // function check
+        var check = true;
+        function checker(){
+            let x = document.getElementById("match-point").value;
+            let y = document.getElementById("phys-point").value;
+            let z = document.getElementById("chem-point").value;
+            let n = document.getElementById("name").value;
+            if(x==""||y==""||z==""||n==""){
+                alert("Các thông tin không được để trống");
+                return check=false;
+            }
+            if(isNaN(x)||isNaN(y)||isNaN(z)){
+                alert("Các thông số về điểm phải là số");
+                return check=false;
+            }else if(x<0||x>10||y<0||y>10||z<0||z>10){
+                alert("Các thông số điểm phải nằm trong khoảng từ 0 đến 10");
+                return check=false;
+            }
+            return check=true;
+        }
+
+        var st=0;
+        
+        function student(){
+            this.name = "";
+            this.matchPoint = 0;
+            this.physPoint = 0;
+            this.chemsPoint = 0;
+        }
+        
+        var allStu = [];
+        function insertFunction(){
+            if(check==false){
+                return;
+            }else{
+                let TestScore = new student;
+                st += 1;
+                TestScore.name = document.getElementById("name").value;
+                TestScore.matchPoint = document.getElementById("match-point").value;
+                TestScore.physPoint = document.getElementById("phys-point").value;
+                TestScore.chemsPoint = document.getElementById("chem-point").value;
+                document.getElementById("name").value="";
+                document.getElementById("match-point").value="";
+                document.getElementById("phys-point").value="";
+                document.getElementById("chem-point").value="";
+                // them hang thong tin vao bang
+                let table = document.getElementById("table-p");
+                let row= table.insertRow(st);
+                let cell0 = row.insertCell(0);
+                let cell1 = row.insertCell(1);
+                let cell2 = row.insertCell(2);
+                let cell3 = row.insertCell(3);
+                let cell4 = row.insertCell(4);
+                let cell5 = row.insertCell(5);
+                cell0.innerHTML = st;
+                cell1.innerHTML = TestScore.name;
+                cell2.innerHTML = TestScore.matchPoint;
+                cell3.innerHTML = TestScore.physPoint;
+                cell4.innerHTML = TestScore.chemsPoint;
+                cell5.innerHTML = " ? ";
+                allStu.push(TestScore);
+            }
+        }
+      
+        function calculator(){
+            var allPoint=[];
+            for(let i=0; i<allStu.length; i++){
+                let point = allStu[i].matchPoint*1 + allStu[i].physPoint*1 + allStu[i].chemsPoint*1;
+                let txt = point/3;
+                let tb = txt.toFixed(1);
+                allPoint.push(tb);
+            }
+            
+            var table = document.getElementById("table-p");
+            for (var i = 1, row; row = table.rows[i]; i++) {
+                var j = i-1; 
+                row.cells[5].innerHTML = allPoint[j];                 
+            }
+        }
+        function checkStu(){
+            var table = document.getElementById("table-p");
+            for (var i = 1, row; row = table.rows[i]; i++) { 
+                let x = row.cells[5].innerHTML;
+                if(x>=8.0){
+                    row.cells[5].style.color = "red";
+                    row.cells[5].style.backgroundColor = "yellow";
+                }          
+            }
+        }
+    </script>
+</body>
+</html>
